@@ -33,8 +33,8 @@ permalink: /:title/
 # Header navigation links
 header_pages:
   - Home: /
-  - About Me: /about.html
-  - Services: /services.html
-  - My Approach: /my-approach.html
-  - FAQs & Resources: /faqs-resources.html
-  - Contact: /contact.html
+  - About Me: /about/
+  - Services: /services/
+  - My Approach: /my-approach/
+  - FAQs & Resources: /faqs-resources/
+  - Contact: /contact/
