@@ -1,3 +1,40 @@
 theme: jekyll-theme-minimal
 title: Ellie Poulin, LMFT
-description: Ellie Poulin, Licensed Marriage and Family Therapist
+description: Compassionate Support for Your Journey Towards Well-being
+
+title: Ellie Poulin, LMFT
+author: Ellie Poulin
+email: ellie@elliepoulinlmft.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://elliepoulinlmft.com" # the base hostname & protocol for your site
+timezone: America/Los_Angeles # Set your local timezone
+
+# Build settings
+markdown: kramdown
+theme: minima # You can choose other themes or remove if you're building completely custom
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+
+# Permalink structure (optional)
+permalink: /:title/
+
+# Enable future posts (useful for scheduling)
+# future: true
+
+# Plugins (if you use any, e.g., jekyll-feed)
+# plugins:
+#   - jekyll-feed
+
+# Header navigation links
+header_pages:
+  - Home: /
+  - About Me: /about.html
+  - Services: /services.html
+  - My Approach: /my-approach.html
+  - FAQs & Resources: /faqs-resources.html
+  - Contact: /contact.html
