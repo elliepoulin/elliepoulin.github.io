@@ -5,8 +5,10 @@
         </div>
         <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-lg">
             {% for page_item in site.header_pages %}
-                <a href="{{ page_item[1] | relative_url }}" class="text-gray-700 hover:text-primary-dark transition-colors duration-300 rounded-md focus:focus-ring p-2 -m-2">
-                    {{ page_item[0] }}
+                {% assign page_title = page_item.first[0] %}
+                {% assign page_url = page_item.first[1] %}
+                <a href="{{ page_url | relative_url }}" class="text-gray-700 hover:text-primary-dark transition-colors duration-300 rounded-md focus:focus-ring p-2 -m-2">
+                    {{ page_title }}
                 </a>
             {% endfor %}
         </div>
