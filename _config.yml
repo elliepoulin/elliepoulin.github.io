@@ -35,6 +35,7 @@ header_pages:
   - Home: /
   - About Me: /about/
   - Services: /services/
-  - My Approach: /my-approach/
+  - Approach: /my-approach/
+  - Specializations: /specializations/
   - FAQs & Resources: /faqs-resources/
   - Contact: /contact/
