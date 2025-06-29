@@ -1,3 +1,71 @@
+<style>
+    /* Basic Dropdown Styles */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 10;
+        border-radius: 0.5rem; /* rounded-xl */
+        top: 100%; /* Position below the parent link */
+        left: 50%; /* Center dropdown */
+        transform: translateX(-50%); /* Adjust for centering */
+        padding: 0.5rem 0; /* py-2 */
+    }
+
+    .dropdown-content a {
+        color: #333;
+        padding: 0.75rem 1rem; /* px-4 py-3 */
+        text-decoration: none;
+        display: block;
+        text-align: left; /* Align text within dropdown */
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: 0.5rem; /* rounded-xl */
+        white-space: nowrap; /* Prevent wrapping */
+    }
+
+    .dropdown-content a:hover {
+        background-color: #e0f2f7; /* bg-accent-light */
+        color: #2a6f6f; /* text-primary-dark */
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Adjust for mobile to stack vertically, no dropdown */
+    @media (max-width: 639px) { /* Tailwind's sm breakpoint - 1px */
+        .dropdown .dropdown-content {
+            position: static;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-shadow: none;
+            padding: 0;
+            background-color: transparent; /* No background for sub-items on mobile */
+            transform: none; /* Remove centering transform */
+        }
+        .dropdown-content a {
+            padding-left: 2.5rem; /* Indent sub-menu items */
+            text-align: center; /* Center on mobile too */
+        }
+        .dropdown:hover .dropdown-content {
+            display: flex; /* Always display sub-items on mobile */
+        }
+        /* Ensure top-level nav links are centered */
+        .flex-wrap.justify-center a, .flex-wrap.justify-center .dropdown > a {
+            text-align: center;
+            width: 100%; /* Take full width on mobile */
+        }
+    }
+</style>
+
 <header class="bg-white shadow-sm py-4">
     <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center">
         <div class="text-2xl font-bold text-primary-dark mb-4 sm:mb-0">
@@ -5,11 +73,23 @@
         </div>
         <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-lg">
             {% for page_item in site.header_pages %}
-                {% assign page_title = page_item.first[0] %}
-                {% assign page_url = page_item.first[1] %}
-                <a href="{{ page_url | relative_url }}" class="text-gray-700 hover:text-primary-dark transition-colors duration-300 rounded-md focus:focus-ring p-2 -m-2">
-                    {{ page_title }}
-                </a>
+                {% if page_item.first[0] == "Resources" %}
+                    <div class="dropdown">
+                        <a href="{{ '/resources/' | relative_url }}" class="text-gray-700 hover:text-primary-dark transition-colors duration-300 rounded-md focus:focus-ring p-2 -m-2">
+                            Resources
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="{{ '/exercises/' | relative_url }}">Exercises</a>
+                            <a href="{{ '/organizations/' | relative_url }}">Organizations</a>
+                        </div>
+                    </div>
+                {% else %}
+                    {% assign page_title = page_item.first[0] %}
+                    {% assign page_url = page_item.first[1] %}
+                    <a href="{{ page_url | relative_url }}" class="text-gray-700 hover:text-primary-dark transition-colors duration-300 rounded-md focus:focus-ring p-2 -m-2">
+                        {{ page_title }}
+                    </a>
+                {% endif %}
             {% endfor %}
         </div>
     </nav>
