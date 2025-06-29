@@ -38,5 +38,5 @@ header_pages:
   - Approach: /approach/
   - Specializations: /specializations/
   - FAQs: /faqs/
-  - Resources: /resources/
+    # Resources will be handled explicitly in header_nav.html for dropdown
   - Contact: /contact/
