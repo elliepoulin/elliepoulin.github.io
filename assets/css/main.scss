@@ -11,8 +11,12 @@ body {
 .font-brand {
     font-family: 'Encode Sans SC', sans-serif;
 }
+
+/* Custom Theme Colors */
 .text-primary-dark { color: #2a6f6f; } /* Dark Teal */
+.text-primary-medium { color: #60A39A; } /* Muted Medium Teal-Green - NEW */
 .text-primary-light { color: #4CAF50; } /* Soft Green */
+.bg-primary-dark { background-color: #2a6f6f; } /* Dark Teal - Explicitly defined */
 .bg-accent-light { background-color: #e0f2f7; } /* Light Blue-Green */
 .bg-accent-medium { background-color: #b2dfdb; } /* Medium Teal-Green */
 .border-primary { border-color: #2a6f6f; }
