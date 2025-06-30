@@ -1,11 +1,28 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
 ---
+body {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    background-color: #f8f8f8; /* Light background */
+}
+/* Custom font for the brand name */
+.font-brand {
+    font-family: 'Encode Sans SC', sans-serif;
+}
+.text-primary-dark { color: #2a6f6f; } /* Dark Teal */
+.text-primary-light { color: #4CAF50; } /* Soft Green */
+.bg-accent-light { background-color: #e0f2f7; } /* Light Blue-Green */
+.bg-accent-medium { background-color: #b2dfdb; } /* Medium Teal-Green */
+.border-primary { border-color: #2a6f6f; }
+.focus-ring {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(42, 111, 111, 0.5); /* Focus ring matches dark teal */
+}
 
-@charset "utf-8";
-
+/*
+// @charset "utf-8";
 // Import the Google Font for headings
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:wght@300;400;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:wght@300;400;700&display=swap');
 
 // 1. IMPORT THEME DEFAULTS
 // First, we import your theme's original styles. This is crucial.
@@ -116,4 +133,4 @@ img {
     margin-bottom: 0;
   }
 }
-
+*/
