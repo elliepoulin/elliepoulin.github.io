@@ -1,44 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Encode+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #333;
-            background-color: #f8f8f8; /* Light background */
-        }
-        /* Custom font for the brand name */
-        .font-brand {
-            font-family: 'Encode Sans SC', sans-serif;
-        }
-        .text-primary-dark { color: #2a6f6f; } /* Dark Teal */
-        .text-primary-light { color: #4CAF50; } /* Soft Green */
-        .bg-accent-light { background-color: #e0f2f7; } /* Light Blue-Green */
-        .bg-accent-medium { background-color: #b2dfdb; } /* Medium Teal-Green */
-        .border-primary { border-color: #2a6f6f; }
-        .focus-ring {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(42, 111, 111, 0.5); /* Focus ring matches dark teal */
-        }
-    </style>
-</head>
-<body class="flex flex-col min-h-screen">
-    <!-- Header Section -->
-    {% include header_nav.html %}
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-    <!-- Main Content Area - This is where the content of each page will be injected -->
-    <main class="flex-grow">
+  {%- include head.html -%}
+
+  <body>
+
+    {%- include header.html -%}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
         {{ content }}
+      </div>
     </main>
 
-    <!-- Footer Section -->
-    {% include footer.html %}
-</body>
+    {%- include footer.html -%}
+
+  </body>
+
 </html>
