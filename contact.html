@@ -24,12 +24,9 @@ permalink: /contact/
         <p class="text-lg text-gray-700">
             You can also fill out the form below, and I will get back to you within 1-2 business days.
         </p>
-        <!-- NOTE: This is a static HTML form. To make it functional, you will need to integrate a third-party service
-             like Formspree (https://formspree.io/) or Netlify Forms (https://www.netlify.com/products/forms/).
-             For Formspree, you'd typically change action="/your-formspree-hash" and method="POST".
-             For Netlify Forms, add data-netlify="true" to the form tag and a hidden Netlify field.
-        -->
-        <form class="mt-8 max-w-lg mx-auto space-y-4" action="YOUR_FORMSPREE_OR_NETLIFY_ENDPOINT" method="POST">
+        <form class="mt-8 max-w-lg mx-auto space-y-4" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="21c9f49c-4c4c-467f-b16b-e6347be4bbcc">
+            <input type="hidden" anem="from_name" value="My Website">
             <div>
                 <label for="name" class="sr-only">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:border-primary-dark focus:ring focus:ring-primary-light focus-ring">
@@ -37,6 +34,10 @@ permalink: /contact/
             <div>
                 <label for="email" class="sr-only">Email</label>
                 <input type="email" id="email" name="email" placeholder="Your Email" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:border-primary-dark focus:ring focus:ring-primary-light focus-ring">
+            </div>
+            <div>
+                <label for="phone" class="sr-only">Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="Your Phone (Optional)" class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:border-primary-dark focus:ring focus:ring-primary-light focus-ring">
             </div>
             <div>
                 <label for="subject" class="sr-only">Subject</label>
