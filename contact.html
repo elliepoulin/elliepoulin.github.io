@@ -24,9 +24,15 @@ permalink: /contact/
         <p class="text-lg text-gray-700">
             You can also fill out the form below, and I will get back to you within 1-2 business days.
         </p>
-        <form class="mt-8 max-w-lg mx-auto space-y-4" action="https://api.web3forms.com/submit" method="POST">
+
+        <!-- Message display area -->
+        <div id="form-messages" class="mt-4 mb-6 text-lg font-semibold"></div>
+
+        <form id="contact-form" class="mt-8 max-w-lg mx-auto space-y-4" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="21c9f49c-4c4c-467f-b16b-e6347be4bbcc">
-            <input type="hidden" anem="from_name" value="My Website">
+            <input type="hidden" name="from_name" value="Ellie Poulin LMFT Website"> <!-- Corrected name attribute -->
+            <input type="hidden" name="redirect" value="https://web3forms.com/success"> <!-- Keep for fallback, but JS will override -->
+
             <div>
                 <label for="name" class="sr-only">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:border-primary-dark focus:ring focus:ring-primary-light focus-ring">
@@ -47,9 +53,59 @@ permalink: /contact/
                 <label for="message" class="sr-only">Message</label>
                 <textarea id="message" name="message" rows="5" placeholder="Your Message" required class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:border-primary-dark focus:ring focus:ring-primary-light focus-ring"></textarea>
             </div>
-            <button type="submit" class="w-full bg-primary-dark text-white font-semibold font-button py-3 px-6 rounded-md shadow-lg hover:bg-primary-light transition-all duration-300 transform hover:scale-105 rounded-md focus:focus-ring">
+            <button type="submit" class="w-full bg-primary-dark text-white font-semibold py-3 px-6 rounded-md shadow-lg hover:bg-accent-medium transition-all duration-300 transform hover:scale-105 rounded-md focus:focus-ring">
                 Send Message
             </button>
         </form>
     </div>
 </section>
+
+<script>
+    // Get the form and message display element
+    const form = document.getElementById('contact-form');
+    const formMessages = document.getElementById('form-messages');
+
+    // Add an event listener for form submission
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent the default form submission (page reload)
+
+        // Clear previous messages
+        formMessages.textContent = '';
+        formMessages.className = 'mt-4 mb-6 text-lg font-semibold'; // Reset classes
+
+        // Show a loading message
+        formMessages.textContent = 'Sending your message...';
+        formMessages.classList.add('text-primary-medium'); // Use a theme color for loading
+
+        // Get form data
+        const formData = new FormData(form);
+
+        try {
+            // Send the form data using fetch API
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json' // Important for Web3Forms AJAX response
+                }
+            });
+
+            // Parse the JSON response
+            const result = await response.json();
+
+            if (result.success) {
+                formMessages.textContent = 'Message sent successfully! I will get back to you shortly.';
+                formMessages.classList.add('text-primary-dark'); // Success color
+                form.reset(); // Clear the form fields
+            } else {
+                // Display error message from Web3Forms or a generic one
+                formMessages.textContent = result.message || 'Oops! Something went wrong. Please try again.';
+                formMessages.classList.add('text-red-600'); // Error color (using Tailwind default red)
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            formMessages.textContent = 'Network error. Please check your internet connection and try again.';
+            formMessages.classList.add('text-red-600'); // Error color
+        }
+    });
+</script>
